@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  New Post
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-4 rounded shadow" style="background-color: #f3e8ff; max-width: 700px;">
+    <h2 class="text-center mb-4" style="color: #6f42c1;">Create New Blog Post</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="id_title" class="form-label" style="color: #4a148c;">Title</label>
+        <input type="text" name="title" id="id_title" class="form-control rounded-3" placeholder="Enter post title" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="id_desc" class="form-label" style="color: #4a148c;">Description</label>
+        <input type="text" name="desc" id="id_desc" class="form-control rounded-3" placeholder="Enter a short description" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="id_date" class="form-label" style="color: #4a148c;">Date</label>
+        <input type="date" name="date" id="id_date" class="form-control rounded-3" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="id_img" class="form-label" style="color: #4a148c;">Upload Image</label>
+        <input type="file" name="img" id="id_img" class="form-control rounded-3" />
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn text-white px-5 rounded-pill" style="background-color: #6f42c1;">Post</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

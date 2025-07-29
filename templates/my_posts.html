@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  My Posts
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2 class="text-center mb-5" style="color: #6f42c1;">My Blog Posts</h2>
+
+    <div class="row">
+      {% for blog in blogs %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow rounded-4 border-0" style="background-color: #f3e8ff;">
+            {% if blog.img %}
+              <img src="{{ blog.img.url }}" class="card-img-top rounded-top-4" alt="{{ blog.title }}" style="height: 200px; object-fit: cover;" />
+            {% endif %}
+
+            <div class="card-body text-center px-4">
+              <h5 class="card-title" style="color: #4a148c;">{{ blog.title }}</h5>
+              <p class="card-text text-muted">Desc: {{ blog.desc|truncatewords:20 }}</p>
+              <p class="text-secondary small">Posted on: {{ blog.date }}</p>
+
+              <div class="d-flex justify-content-center gap-2 mt-3">
+                <a href="{% url 'edit' blog.id %}" class="btn btn-outline-warning px-4" style="border-color: #6f42c1; color: #6f42c1;">Edit</a>
+                <a href="{% url 'dlt' blog.id %}" class="btn btn-danger px-4">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-center text-muted">You haven't posted anything yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

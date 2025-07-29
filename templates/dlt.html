@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+  Delete
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-4 rounded" style="background-color: #f3e8ff;">
+    <h2 class="text-center mb-4" style="color: #6f42c1;">Confirm Deletion</h2>
+
+    <p class="fs-5 text-center" style="color: #6f42c1;">
+      Are you sure you want to delete <strong>"{{ blog }}"</strong>?
+    </p>
+
+    <div class="text-center">
+      <a href="{% url 'all_posts' %}" class="btn btn-outline-secondary me-2">Cancel</a>
+      <form method="POST" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">YES</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

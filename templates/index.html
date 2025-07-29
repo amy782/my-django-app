@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+  <!-- Hero Section -->
+  <div class="position-relative w-100 vh-100 overflow-hidden">
+    <!-- Fullscreen Background Image -->
+    <img src="{% static 'img/YouTube.jpeg' %}" alt="YouTube" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 z-n1" />
+
+    <!-- Overlay Text with Background -->
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-4 py-3 rounded" style="background-color: rgba(0, 0, 0, 0.6); max-width: 90%;">
+      <h1 class="display-4 fw-bold">My Blogs</h1>
+      <p class="lead">Welcome to my blog page. Stay tuned for the latest updates!</p>
+    </div>
+  </div>
+{% endblock %}

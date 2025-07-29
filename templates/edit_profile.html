@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Edit Profile
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-4 rounded shadow" style="background-color: #f3e8ff; max-width: 600px;">
+    <h2 class="text-center mb-4" style="color: #6f42c1;">Edit Your Profile</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="id_bio" class="form-label" style="color: #4a148c;">Bio</label>
+        <textarea name="bio" id="id_bio" rows="4" class="form-control rounded-3" placeholder="Tell us something about yourself...">{{ form.bio.value }}</textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="id_profile_pic" class="form-label" style="color: #4a148c;">Profile Picture</label>
+        <input type="file" name="profile_pic" id="id_profile_pic" class="form-control rounded-3" />
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn text-white px-5 rounded-pill" style="background-color: #6f42c1;">Save Changes</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

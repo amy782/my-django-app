@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Signup
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-4 rounded shadow" style="background-color: #f3e8ff; max-width: 500px;">
+    <h2 class="text-center mb-4" style="color: #6f42c1;">Create Your Account</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label" style="color: #4a148c;">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div class="text-danger">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-4" style="background-color: #6f42c1; border: none;">Signup</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

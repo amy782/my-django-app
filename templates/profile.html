@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  My Profile
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 p-4 rounded shadow" style="background-color: #f3e8ff; max-width: 700px;">
+    <h2 class="text-center mb-4" style="color: #6f42c1;">{{ profile.user.username }}'s Profile</h2>
+
+    <div class="text-center mb-4">
+      {% if profile.profile_pic %}
+        <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="rounded-circle shadow" style="width: 150px; height: 150px; object-fit: cover;" />
+      {% else %}
+        <img src="{% static 'img/default-profile.png' %}" alt="Default Profile" class="rounded-circle shadow" style="width: 150px; height: 150px; object-fit: cover;" />
+      {% endif %}
+    </div>
+
+    <div class="text-center">
+      <p>
+        <strong>Bio:</strong> {{ profile.bio }}
+      </p>
+      <a href="{% url 'edit_profile' %}" class="btn px-4 text-white rounded-pill" style="background-color: #6f42c1;">Edit Profile</a>
+    </div>
+  </div>
+{% endblock %}
